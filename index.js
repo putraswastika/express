@@ -1,9 +1,14 @@
 const express = require('express')
 const app = express()
 const PORT = 3000
+/* const patchToPublicFolder = __dirname +'public' */
+// ini masih bermaslah
 
-app.get('/',(req,res)=>{
-    res.send('Hello World!')
+app.use(express.static('public'))
+
+
+app.get('/index',(req,res)=>{
+    res.sendFile('./public/index.html',{root:__dirname})
 })
 
 app.listen(PORT,()=>{
